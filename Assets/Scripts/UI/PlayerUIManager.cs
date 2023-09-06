@@ -13,24 +13,6 @@ public class PlayerUIManager : MonoBehaviour
     [Header("Player Name UI")]
     public Transform playerNameParent;
     public PlayerNameUI playerNamePrefab;
-    //private List<GameObject> playerListItems = new List<GameObject>();
-
-    private void Start()
-    {
-        //SetPlayerListUI();
-    }
-
-    public void SetPlayerListUI()
-    {
-        for (int i = 0; i < GameManager.Instance.players.Count; i++)
-        {
-            GameObject newListItem = Instantiate(playerListItemPrefab);
-            newListItem.transform.parent = playerListParent;
-            newListItem.GetComponent<TextMeshProUGUI>().text = GameManager.Instance.players[i].name;
-
-            //playerListItems.Add(newListItem);
-        }
-    }
 
     public void OnPlayerEnter(Player enterPlayer)
     {
@@ -46,13 +28,9 @@ public class PlayerUIManager : MonoBehaviour
 
         newPlayerName.target = enterPlayer.transform;
         newPlayerName.GetComponentInChildren<TextMeshProUGUI>().text = enterPlayer.playerName;
-
-        //playerListItems.Add(newListItem);
     }
     public void OnPlayerExit(Player exitPlayer)
     {
-        //GameObject removeListItem = playerListItems.Find(x => x.GetComponent<TextMeshProUGUI>().text == exitPlayer.name);
-        //playerListItems.Remove(removeListItem);
         Destroy(exitPlayer.playerNameListUI);
         Destroy(exitPlayer.playerNameUI);
     }

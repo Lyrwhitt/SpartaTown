@@ -14,7 +14,7 @@ public class PlayerInitSettingUI : MonoBehaviour
 
     [Header("Name Input Set")]
     public TMP_InputField nameInput;
-    public TextMeshProUGUI playerNameTxt;
+    //public TextMeshProUGUI playerNameTxt;
 
     [Header("Setting Objects")]
     public GameObject settingObj;
@@ -46,11 +46,12 @@ public class PlayerInitSettingUI : MonoBehaviour
             return;
         }
 
-        playerNameTxt.text = nameInput.text;
+        //playerNameTxt.text = nameInput.text;
 
         this.gameObject.SetActive(false);
         inGameUiObj.SetActive(true);
-        PlayerSet.Instance.SetPlayer(GameManager.Instance.player, PlayerSet.Instance.selectedCharacter, nameInput.text);
+        PlayerSet.Instance.SetPlayerInit(GameManager.Instance.player, PlayerSet.Instance.selectedCharacter, nameInput.text);
+        //GameManager.Instance.playerUIManager.OnPlayerEnter(GameManager.Instance.player);
     }
 
     public void CharacterSelectBtnClicked()

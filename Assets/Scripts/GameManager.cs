@@ -16,21 +16,33 @@ public class GameManager : Singleton<GameManager>
 
     public Player player;
 
-    private PlayerUIManager _playerUIManager;
+    public PlayerUIManager playerUIManager;
 
-    private void Awake()
+
+    private void Start()
     {
-        _playerUIManager = this.GetComponent<PlayerUIManager>();
+        InitSet();
+    }
+
+    public void InitSet()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            playerUIManager.OnPlayerEnter(players[i]);
+            players[i].playerNameUI.offset = new Vector3(0f, 3f, 0f);
+        }
     }
 
 
+    // Test
     public Player dummy;
     public void TestPlayerList()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Player newPlayer = Instantiate(dummy);
-            _playerUIManager.OnPlayerEnter(newPlayer);
+            playerUIManager.OnPlayerEnter(newPlayer);
+            newPlayer.playerNameUI.offset = new Vector3(0f, 3f, 0f);
         }
     }
 

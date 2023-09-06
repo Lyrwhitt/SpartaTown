@@ -28,7 +28,6 @@ public class InGameUI : MonoBehaviour
     public GameObject switchNameObj;
     public GameObject checkNameObj;
     public TMP_InputField nameInput;
-    public TextMeshProUGUI playerNameTxt;
 
     private void Start()
     {
@@ -81,10 +80,8 @@ public class InGameUI : MonoBehaviour
             return;
         }
 
-        playerNameTxt.text = nameInput.text;
-
         switchNameObj.SetActive(false);
 
-        PlayerSet.Instance.SwitchPlayerName(GameManager.Instance.player, playerNameTxt.text);
+        PlayerSet.Instance.SwitchPlayerName(GameManager.Instance.player, nameInput.text);
     }
 }

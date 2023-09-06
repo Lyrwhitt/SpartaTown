@@ -12,9 +12,10 @@ public class PlayerSet : Singleton<PlayerSet>
     public List<GameObject> characters = new List<GameObject>();
 
 
-    public void SetPlayer(Player player, Character character, string playerName)
+    public void SetPlayerInit(Player player, Character character, string playerName)
     {
         SwitchPlayerCharacter(player, character);
+        GameManager.Instance.playerUIManager.OnPlayerEnter(GameManager.Instance.player);
         SwitchPlayerName(player, playerName);
     }
 
@@ -46,6 +47,7 @@ public class PlayerSet : Singleton<PlayerSet>
     public void SwitchPlayerName(Player player, string playerName)
     {
         player.playerName = playerName;
+        player.playerNameUI.nameText.text = playerName;
     }
 
 
